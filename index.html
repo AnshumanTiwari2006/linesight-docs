@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="LineSight — a transparent, open-source Python library for learning regression from the ground up. Gain deep intuition through interactive visualizations, plain-English model explanations, and step-by-step gradient descent walkthroughs.">
+    <meta name="theme-color" content="#000000">
+    <title>LineSight — Learn Regression, Step by Step</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+</head>
+
+<body>
+
+    <!-- ======== NAVIGATION ======== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo" id="nav-logo">
+                <div class="logo-icon">
+                    <img src="docs/v0.1.0/assets/image/LineSight_Logo.png" width="28" height="28" alt="LineSight Logo"
+                        style="border-radius: 8px; object-fit: contain;">
+                </div>
+                <span class="logo-text">LineSight</span>
+                <span class="logo-version">v0.1.0</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="https://forms.gle/pdXSWyJYN8JyxVD36" class="nav-link">Email Us</a>
+                <a href="#models" class="nav-link">Models</a>
+                <a href="docs/latest/index.html" class="nav-link">Documentation</a>
+                <a href="#install" class="nav-link">Install</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://github.com/AnshumanTiwari2006/linesight" class="nav-github" target="_blank"
+                    rel="noopener" aria-label="GitHub Repository">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <button class="nav-menu-toggle" id="nav-menu-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======== HERO SECTION ======== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-elements">
+            <div class="hero-grid-line hero-grid-line-1"></div>
+            <div class="hero-grid-line hero-grid-line-2"></div>
+            <div class="hero-grid-line hero-grid-line-3"></div>
+
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    Master Regression,<br>
+                    <span class="hero-title-accent">From First Principles.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    LineSight is a transparent Python library designed to teach you how regression
+                    <em>actually works</em> — not just how to call it. Every model exposes its internal
+                    mechanics through plain-English explanations, real-time training animations, and
+                    over 30 diagnostic visualizations.
+                </p>
+                <div class="hero-actions">
+                    <a href="#tutorials" class="btn btn-primary" id="hero-get-started">
+                        Get Started
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="docs/latest/index.html" class="btn btn-secondary" id="hero-docs">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 3H12V13H4V3ZM4 3L2 5V13H4M12 3L14 5V13H12" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Read the Documentation
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">Models</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value">30+</span>
+                        <span class="stat-label">Visualizations</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-value">109</span>
+                        <span class="stat-label">Tests</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-window-header">
+                        <div class="code-window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <span class="code-window-title">quickstart.py</span>
+                    </div>
+                    <pre class="code-window-body"><code><span class="code-keyword">from</span> <span class="code-module">linesight</span> <span class="code-keyword">import</span> <span class="code-class">LinearRegression</span>
+
+<span class="code-var">model</span> = <span class="code-class">LinearRegression</span>(
+    <span class="code-param">learning_rate</span>=<span class="code-number">0.01</span>,
+    <span class="code-param">epochs</span>=<span class="code-number">1000</span>,
+    <span class="code-param">store_history</span>=<span class="code-bool">True</span>
+)
+<span class="code-var">model</span>.<span class="code-method">fit</span>(X, y)
+
+<span class="code-comment"># See your equation</span>
+<span class="code-var">model</span>.<span class="code-method">show_equation</span>()
+<span class="code-output">→  ŷ = 2.01x + 0.98</span>
+
+<span class="code-comment"># Understand the fit</span>
+<span class="code-var">model</span>.<span class="code-method">explain_fit</span>(X, y)
+<span class="code-output">→  R² = 0.998 — explains 99.8% of variance</span>
+
+<span class="code-comment"># Watch it learn</span>
+<span class="code-var">model</span>.<span class="code-method">animate_training</span>(X, y)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== TUTORIALS SECTION ======== -->
+    <section class="section tutorials-section" id="tutorials">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Learn</span>
+                <h2 class="section-title">Tutorials</h2>
+                <p class="section-subtitle">Hands-on, end-to-end walkthroughs that teach regression concepts through
+                    working code. Each tutorial runs directly in Jupyter Notebooks — zero configuration required.</p>
+            </div>
+
+            <!-- For Beginners -->
+            <div class="tutorial-group">
+                <div class="group-header">
+                    <div class="group-icon group-icon-beginner">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="group-title">For Beginners</h3>
+                        <p class="group-desc">No prerequisites beyond basic Python. Build intuition for core
+                            regression concepts through guided, interactive examples.</p>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <a href="#" class="tutorial-card" id="card-quickstart">
+                        <div class="card-accent card-accent-purple"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Quickstart</div>
+                            <h4 class="card-title">Beginner Quickstart</h4>
+                            <p class="card-desc">Train, evaluate, and interpret your first regression model
+                                in five lines of code using <code>fit()</code>,
+                                <code>predict()</code>, and <code>score()</code>.
+                            </p>
+                            <div class="card-footer">
+                                <span class="card-model">LinearRegression</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="tutorial-card" id="card-visualize">
+                        <div class="card-accent card-accent-blue"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Visualization</div>
+                            <h4 class="card-title">Visualize the Mathematics</h4>
+                            <p class="card-desc">Watch gradient descent converge in real time. Explore 3D loss
+                                surfaces, residual distributions, and training dynamics through interactive plots.</p>
+                            <div class="card-footer">
+                                <span class="card-model">plot_fit · animate_training</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="tutorial-card" id="card-explain">
+                        <div class="card-accent card-accent-teal"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Understanding</div>
+                            <h4 class="card-title">Interpret Model Results</h4>
+                            <p class="card-desc">Translate raw coefficients into actionable insights using
+                                <code>summary()</code> and <code>explain_coefficients()</code> for
+                                human-readable model interpretation.
+                            </p>
+                            <div class="card-footer">
+                                <span class="card-model">explain · summary</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- For Experts -->
+            <div class="tutorial-group">
+                <div class="group-header">
+                    <div class="group-icon group-icon-expert">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="group-title">Advanced Topics</h3>
+                        <p class="group-desc">Explore regularization techniques, binary classification, and
+                            publication-quality diagnostic visualizations.
+                        </p>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <a href="#" class="tutorial-card" id="card-regularization">
+                        <div class="card-accent card-accent-amber"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Regularization</div>
+                            <h4 class="card-title">Ridge, Lasso & ElasticNet</h4>
+                            <p class="card-desc">Understand the geometry of regularization — visualize L1/L2 constraint
+                                regions, coefficient shrinkage paths, and feature elimination thresholds.</p>
+                            <div class="card-footer">
+                                <span class="card-model">RidgeRegression · LassoRegression</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="tutorial-card" id="card-classification">
+                        <div class="card-accent card-accent-rose"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Classification</div>
+                            <h4 class="card-title">Logistic Regression</h4>
+                            <p class="card-desc">Visualize decision boundaries, sigmoid probability surfaces,
+                                ROC/AUC curves, and confusion matrices for binary classification tasks.</p>
+                            <div class="card-footer">
+                                <span class="card-model">LogisticRegression</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="tutorial-card" id="card-advanced-viz">
+                        <div class="card-accent card-accent-green"></div>
+                        <div class="card-body">
+                            <div class="card-tag">Advanced</div>
+                            <h4 class="card-title">Diagnostic Visualizations</h4>
+                            <p class="card-desc">Generate 3D loss surfaces, multicollinearity diagnostics (VIF),
+                                partial regression plots, prediction intervals, and sensitivity analyses.</p>
+                            <div class="card-footer">
+                                <span class="card-model">30+ visualization methods</span>
+                                <span class="card-arrow">→</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== MODELS SECTION ======== -->
+    <section class="section models-section" id="models">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Explore</span>
+                <h2 class="section-title">Models</h2>
+                <p class="section-subtitle">Six regression and classification models built on a consistent,
+                    scikit-learn-style API. Every model exposes <code>fit()</code>, <code>predict()</code>,
+                    <code>score()</code>, and <code>get_training_history()</code> — making it easy to
+                    compare algorithms side by side.
+                </p>
+            </div>
+            <div class="models-grid">
+                <div class="model-card" id="model-linear">
+                    <div class="model-icon model-icon-linear">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="4" y1="20" x2="20" y2="4" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">LinearRegression</h4>
+                    <p class="model-desc">Ordinary least squares via gradient descent. Directly exposes learned
+                        <code>m</code> (slope) and <code>b</code> (intercept) for full transparency.
+                    </p>
+                    <span class="model-algo">Gradient Descent</span>
+                </div>
+                <div class="model-card" id="model-multiple">
+                    <div class="model-icon model-icon-multiple">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <line x1="4" y1="20" x2="20" y2="4" />
+                            <line x1="4" y1="16" x2="16" y2="4" opacity="0.5" />
+                            <line x1="8" y1="20" x2="20" y2="8" opacity="0.5" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">MultipleLinearRegression</h4>
+                    <p class="model-desc">Multi-feature regression with per-feature importance ranking, Variance
+                        Inflation Factor (VIF) diagnostics, and partial regression analysis.</p>
+                    <span class="model-algo">Gradient Descent</span>
+                </div>
+                <div class="model-card" id="model-ridge">
+                    <div class="model-icon model-icon-ridge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="8" />
+                            <line x1="4" y1="20" x2="20" y2="4" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">RidgeRegression</h4>
+                    <p class="model-desc">L2-penalized regression that prevents overfitting by shrinking
+                        coefficients toward zero. Includes visual constraint region overlays and
+                        shrinkage path plots.</p>
+                    <span class="model-algo">Gradient Descent</span>
+                </div>
+                <div class="model-card" id="model-lasso">
+                    <div class="model-icon model-icon-lasso">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12,4 20,12 12,20 4,12" />
+                            <line x1="4" y1="20" x2="20" y2="4" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">LassoRegression</h4>
+                    <p class="model-desc">L1-penalized regression for automatic feature selection. Visualize
+                        sparsity paths that reveal at which regularization strength each feature is
+                        eliminated.
+                    </p>
+                    <span class="model-algo">Coordinate Descent</span>
+                </div>
+                <div class="model-card" id="model-elasticnet">
+                    <div class="model-icon model-icon-elasticnet">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <circle cx="12" cy="12" r="8" opacity="0.5" />
+                            <polygon points="12,4 20,12 12,20 4,12" opacity="0.5" stroke-linejoin="round" />
+                            <line x1="4" y1="20" x2="20" y2="4" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">ElasticNetRegression</h4>
+                    <p class="model-desc">Combines L1 and L2 penalties with a tunable mixing ratio. Visualize
+                        the trade-off between sparsity (Lasso) and stability (Ridge) in a unified
+                        framework.</p>
+                    <span class="model-algo">Coordinate Descent</span>
+                </div>
+                <div class="model-card" id="model-logistic">
+                    <div class="model-icon model-icon-logistic">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <path d="M2 20 C8 20 8 4 14 4 C20 4 20 4 22 4" />
+                        </svg>
+                    </div>
+                    <h4 class="model-name">LogisticRegression</h4>
+                    <p class="model-desc">Binary classification via the sigmoid function. Renders decision
+                        boundaries, probability surfaces, ROC/AUC curves, and confusion matrices
+                        for comprehensive evaluation.</p>
+                    <span class="model-algo">Gradient Descent</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FEATURES / ARCHITECTURE SECTION ======== -->
+    <section class="section features-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">Three Transparent Layers</h2>
+                <p class="section-subtitle">Every model in LineSight is decomposed into three clearly separated layers —
+                    computation, interpretation, and visualization — so you always know exactly what is
+                    happening and why.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" id="feature-engine">
+                    <div class="feature-icon feature-icon-engine">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20V10" />
+                            <path d="M18 20V4" />
+                            <path d="M6 20v-4" />
+                        </svg>
+                    </div>
+                    <h4 class="feature-name">engine/</h4>
+                    <p class="feature-desc">The numerical core. Clean, readable implementations of gradient descent
+                        and coordinate descent that expose named <code>weights</code> and <code>bias</code>
+                        parameters instead of opaque theta vectors.</p>
+                </div>
+                <div class="feature-card" id="feature-explain">
+                    <div class="feature-icon feature-icon-explain">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <h4 class="feature-name">explain/</h4>
+                    <p class="feature-desc">Natural-language interpretation layer. Automatically translates
+                        coefficients, regularization effects, and decision boundaries into
+                        human-readable explanations with contextual annotations.</p>
+                </div>
+                <div class="feature-card" id="feature-visualization">
+                    <div class="feature-icon feature-icon-viz">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <polyline points="9 17 9 12 13 12 13 8" />
+                        </svg>
+                    </div>
+                    <h4 class="feature-name">visualization/</h4>
+                    <p class="feature-desc">Publication-quality matplotlib visualizations and animations. Includes
+                        loss surfaces, residual diagnostics, training convergence animations,
+                        prediction intervals, and 30+ additional methods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== INSTALL SECTION ======== -->
+    <section class="section install-section" id="install">
+        <div class="section-container">
+            <div class="install-card">
+                <div class="install-content">
+                    <h2 class="install-title">Get Started in Seconds</h2>
+                    <p class="install-desc">Install LineSight with a single command and begin exploring regression
+                        models immediately. No additional configuration required.</p>
+                    <div class="install-steps">
+                        <div class="install-step">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <span class="step-label">Install the package</span>
+                                <div class="install-code" id="install-code-pip">
+                                    <code>pip install linesight</code>
+                                    <button class="copy-btn" onclick="copyCode('pip install linesight', this)"
+                                        aria-label="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <span class="step-label">Or install for development</span>
+                                <div class="install-code" id="install-code-dev">
+                                    <code>git clone https://github.com/AnshumanTiwari2006/linesight && cd linesight && pip install -e ".[dev]"</code>
+                                    <button class="copy-btn"
+                                        onclick="copyCode('git clone https://github.com/AnshumanTiwari2006/linesight && cd linesight && pip install -e \"
+                                        .[dev]\"', this)" aria-label="Copy to clipboard">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <span class="step-label">Requires</span>
+                                <div class="install-reqs">
+                                    <span class="req-badge">Python ≥ 3.9</span>
+                                    <span class="req-badge">NumPy ≥ 1.24</span>
+                                    <span class="req-badge">Matplotlib ≥ 3.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="docs/v0.1.0/assets/image/LineSight_Logo.png" width="24" height="24"
+                            alt="LineSight Logo" style="border-radius: 6px; object-fit: contain;">
+                        <span>LineSight</span>
+                    </div>
+                    <p class="footer-tagline">A transparent regression library built for deep understanding.</p>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h5 class="footer-col-title">Learn</h5>
+                        <a href="https://forms.gle/pdXSWyJYN8JyxVD36" class="footer-link">Email Us</a>
+                        <a href="#" class="footer-link">Quick Start</a>
+                        <a href="LineSight_Interactive_Tutorial.ipynb" class="footer-link">Jupyter Notebooks</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5 class="footer-col-title">Community</h5>
+                        <a href="https://github.com/AnshumanTiwari2006/linesight" class="footer-link"
+                            target="_blank">GitHub</a>
+                        <a href="https://github.com/AnshumanTiwari2006/linesight/issues" class="footer-link"
+                            target="_blank">Issue Tracker</a>
+                        <a href="#" class="footer-link">Contributing</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2025 LineSight. Released under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
